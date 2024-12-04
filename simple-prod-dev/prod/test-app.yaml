@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+  namespace: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata:
+      labels:
+        app: test-app
+    spec:
+      containers:
+      - name: test-app
+        image: nginx
+        env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: app-config
+              key: api_key
+        - name: DB_URL
+          valueFrom:
+            secretKeyRef:
+              name: app-config
+              key: db_url
+        - name: CACHE_URL
+          valueFrom:
+            secretKeyRef:
+              name: app-config
+              key: cache_url

@@ -1,0 +1,6 @@
+global:
+  environment: dev
+
+appConfig:
+  secretPath:
+    dev: "dev/app-config"

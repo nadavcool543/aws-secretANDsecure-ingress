@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: app-config
+  namespace: dev
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    name: aws-backend
+    kind: SecretStore
+  target:
+    name: app-config
+  data:
+    - secretKey: api_key
+      remoteRef:
+        key: dev/app-config
+        property: api_key
+    - secretKey: db_url
+      remoteRef:
+        key: dev/app-config
+        property: db_url
+    - secretKey: cache_url
+      remoteRef:
+        key: dev/app-config
+        property: cache_url

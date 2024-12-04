@@ -1,0 +1,20 @@
+global:
+  environment: prod  
+
+aws:
+  region: us-east-1
+
+externalSecrets:
+  refreshInterval: 1h
+  secretStore:
+    name: aws-backend
+
+appConfig:
+  secretName: app-config
+  secretPath:
+    prod: "prod/app-config"
+    dev: "dev/app-config"
+  keys:
+    - name: api_key
+    - name: db_url
+    - name: cache_url

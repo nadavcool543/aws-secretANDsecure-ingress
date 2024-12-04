@@ -1,0 +1,6 @@
+global:
+  environment: prod
+
+appConfig:
+  secretPath:
+    prod: "prod/app-config"

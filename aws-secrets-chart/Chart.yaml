@@ -1,0 +1,12 @@
+apiVersion: v2
+name: aws-secrets
+description: A Helm chart for managing AWS External Secrets
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - aws
+  - secrets
+  - external-secrets
+maintainers:
+  - name: DevOps Team

@@ -1,0 +1,31 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Your release is named {{ .Release.Name }}.
+
+To verify the installation, follow these steps:
+
+1. Verify cert-manager integration:
+   kubectl get pods -n cert-manager
+
+2. Check if ClusterIssuer is created and ready:
+   kubectl get clusterissuer {{ .Values.clusterIssuer.name }}
+   kubectl describe clusterissuer {{ .Values.clusterIssuer.name }}
+
+3. Verify ingress configuration:
+   kubectl get ingress -n {{ .Release.Namespace }}
+   kubectl describe ingress {{ .Values.ingress.name }} -n {{ .Release.Namespace }}
+
+4. Monitor certificate creation:
+   kubectl get certificate -n {{ .Release.Namespace }}
+   kubectl get certificaterequest -n {{ .Release.Namespace }}
+
+Your application should be accessible at:
+https://{{ .Values.ingress.host }}
+
+Important Notes:
+1. Make sure your DNS or /etc/hosts file points {{ .Values.ingress.host }} to your cluster IP
+2. Certificate generation may take a few minutes
+3. If you encounter issues, check the cert-manager logs:
+   kubectl logs -n cert-manager -l app.kubernetes.io/instance=cert-manager
+
+For more troubleshooting information, refer to the README.md file.
