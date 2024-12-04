@@ -10,3 +10,8 @@ keywords:
   - external-secrets
 maintainers:
   - name: DevOps Team
+dependencies:
+  - name: external-secrets
+    version: "0.9.9"
+    repository: "https://charts.external-secrets.io"
+    namespace: external-secrets
